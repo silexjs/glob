@@ -19,17 +19,18 @@ Usage
 var glob = require('silex-glob');
 
 var list = glob('**/*.js', function(filePath) {
-	// Reads all the files with the extension "js" in the current folder and all subfolders (recursive)
+	// Reads all the files with the extension "js"
+	// in the current folder and all subfolders (recursive)
 });
 // And the variable "list" returns an array with the list of found files
 ```
 
-Doc
+Documentation
 --------
 
 ### glob(rules, [callback])
 
-* `rules` {String|Array|Object}
+* `rules` {*String|Array|Object*}
   * The rule can contain regular expressions, but she needs to be enclosed in parentheses
     * Example valid: `./**/*.(js|node)` or `./**/*.mp([2-4])` or ...
     * Exemple incorrecte: `./**/*.mp[2-4]` (`[2-4]` is not in parentheses)
@@ -42,6 +43,6 @@ Doc
         excludes: [],
     }
     ```
-* `callback` {Function}
+* `callback` {*Function*}
   * Callback function is called each time a file is found.
     If the function returns false, then the file is not added to the list returned by Glob, otherwise it is added.
