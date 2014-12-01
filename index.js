@@ -1,4 +1,4 @@
-var path = require('path');
+var resolve = require('path').resolve;
 var fs = require('fs');
 
 
@@ -27,7 +27,7 @@ var glob = function(rulesParam, callback) {
 		var regularPath = rule.substr(0, rule.search(/(\(|\[|\*)/));
 		regularPath = regularPath.substr(0, regularPath.lastIndexOf('/'));
 		rule = rule.substr(regularPath.length).replace(/^\//, '');
-		regularPath = path.resolve(regularPath).replace(/\\/g, '/');
+		regularPath = resolve(regularPath).replace(/\\/g, '/');
 		
 		var save = [];
 		var open = 0;
@@ -88,7 +88,7 @@ var glob = function(rulesParam, callback) {
 				readDir(dirPath, regexs, basePath+contents[i]+'/');
 			}
 		}
-	}
+	};
 	for(i in dirs) {
 		readDir(i, dirs[i], '');
 	}
