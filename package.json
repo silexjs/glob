@@ -1,6 +1,6 @@
 {
   "name": "silex-glob",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple globber (searches for all the pathnames matching pattern according to the rules used)",
   "main": "index.js",
   "engines": {
@@ -29,5 +29,10 @@
   "bugs": {
     "url": "https://github.com/silexjs/glob/issues"
   },
-  "homepage": "https://github.com/silexjs/glob"
+  "homepage": "https://github.com/silexjs/glob",
+  "autoload": {
+    "classmap": {
+      "Silex\\Glob": "./index.js"
+    }
+  }
 }
