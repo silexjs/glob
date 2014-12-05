@@ -72,9 +72,13 @@ var glob = function(rulesParam, callback) {
 
 	var files = [];
 	var readDir = function(dirPath, regexs, basePath) {
-		var contents = fs.readdirSync(dirPath+'/'+basePath);
+		var path = dirPath+'/'+basePath;
+		if(fs.existsSync(path) === false) {
+			return;
+		}
+		var contents = fs.readdirSync(path);
 		for(var i in contents) {
-			var contentPath = dirPath+'/'+basePath+contents[i];
+			var contentPath = path+contents[i];
 			if(fs.lstatSync(contentPath).isFile() === true) {
 				for(var ii in regexs) {
 					if(regexs[ii].test(basePath+contents[i]) === true) {
