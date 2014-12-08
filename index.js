@@ -32,7 +32,7 @@ var glob = function(rulesParam, callback) {
 		var save = [];
 		var open = 0;
 		var start = 0;
-		for(var ii in rule) {
+		for(var ii=0; ii<rule.length; ii++) {
 			ii = parseInt(ii);
 			if(rule[ii] == '(') {
 				if(open == 0) { start = ii; }
@@ -40,10 +40,11 @@ var glob = function(rulesParam, callback) {
 			} else if(rule[ii] == ')') {
 				open--;
 				if(open == 0) {
-					save.push(rule.substr(start, ii-start+1));
-					var ruleStart = rule.substr(0, start);
-					var ruleEnd = rule.substr(ii+1);
-					rule = ruleStart+'<'+(save.length-1)+'>'+ruleEnd;
+					var ruleSave = rule.substr(start, ii-start+1);
+					save.push(ruleSave);
+					var ruleAlias = '<'+(save.length-1)+'>';
+					rule = rule.substr(0, start)+ruleAlias+rule.substr(ii+1);
+					ii = ii-ruleSave.length+ruleAlias.length;
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 {
   "name": "silex-glob",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Simple globber (searches for all the pathnames matching pattern according to the rules used)",
   "main": "index.js",
   "engines": {
